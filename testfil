@@ -1,0 +1,44 @@
+from math import sin,cos,radians
+import random
+
+
+
+class Game:
+    def __init__(self, cannonSize, ballSize):
+            self.cannon = cannonSize
+            self.ball = ballSize
+        
+    p1 = 
+    players = p1, p2   
+    def getPlayers(self):
+        return []
+   
+    
+    def getCannonSize(self):
+        return self.cannon 
+    
+    def getBallSize(self):
+        return self.ball 
+    
+p1 = Game(10, 20)
+
+print(players)
+class Player:
+    def __init__(self, isReversed, xPos, col):
+          self.reverse = isReversed
+          self.pos = xPos
+          self.colour = col
+
+    def getIsReversed(self):
+        return (self.reverse)
+    
+    def getXPos(self):
+        return self.pos
+    
+    def getColour(self):
+        return self.colour
+
+    
+p1 = Player(True, 90, "red")
+
+print(p1)
