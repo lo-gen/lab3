@@ -79,7 +79,7 @@ class Player:
         xPos = self.getX() 
         yPos = self.game.getCannonSize() / 2
         wind = self.game.getCurrentWind() 
-        return Projectile(angle, velocity, wind, xPos, yPos, -110, 110)      
+        return Projectile(angle, velocity, wind, xPos, yPos, -110, 110) #Skapar en ny projektil
 
     """ Gives the x-distance from this players cannon to a projectile. If the cannon and the projectile touch (assuming the projectile is on the ground and factoring in both cannon and projectile size) this method should return 0"""
     def projectileDistance(self, proj):
@@ -91,12 +91,12 @@ class Player:
         proj_extra = ballSize
 
         if this_x < proj_x:     #projektil till höger = positiv
-            if (proj_x - proj_extra) <= (this_x + cannon_extra): #Om projektilens vänstra kant till vänster om kanonens högra kant => träff
+            if (proj_x - proj_extra) <= (this_x + cannon_extra):    #Om projektilens vänstra kant till vänster om kanonens högra kant => träff
                 return 0
             elif (this_x + cannon_extra) < (proj_x - proj_extra):
                 return ((proj_x- ballSize) - (this_x + cannon_extra))
         elif proj_x < this_x:   #projektil till vänster = negativ
-            if (this_x - cannon_extra) <= (proj_x + proj_extra): #Om kanonens vänstra kant till höger om projektilens högra kant => träff
+            if (this_x - cannon_extra) <= (proj_x + proj_extra):    #Om kanonens vänstra kant till höger om projektilens högra kant => träff
                 return 0
             elif (proj_x + proj_extra) < (this_x - cannon_extra):
                 return ((proj_x + proj_extra) - (this_x - cannon_extra))
