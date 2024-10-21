@@ -74,7 +74,7 @@ class Player:
     def fire(self, angle, velocity):
         self.velocity = velocity
         self.angle = angle
-        if self.isReversed == True:
+        if self.isReversed == True: #För spelaren till höger
             angle = 180 - angle
         xPos = self.getX() 
         yPos = self.game.getCannonSize() / 2
@@ -91,12 +91,12 @@ class Player:
         proj_extra = ballSize
 
         if this_x < proj_x:     #projektil till höger = positiv
-            if (proj_x - proj_extra) <= (this_x + cannon_extra):
+            if (proj_x - proj_extra) <= (this_x + cannon_extra): #Om projektilens vänstra kant till vänster om kanonens högra kant => träff
                 return 0
             elif (this_x + cannon_extra) < (proj_x - proj_extra):
                 return ((proj_x- ballSize) - (this_x + cannon_extra))
         elif proj_x < this_x:   #projektil till vänster = negativ
-            if (this_x - cannon_extra) <= (proj_x + proj_extra):
+            if (this_x - cannon_extra) <= (proj_x + proj_extra): #Om kanonens vänstra kant till höger om projektilens högra kant => träff
                 return 0
             elif (proj_x + proj_extra) < (this_x - cannon_extra):
                 return ((proj_x + proj_extra) - (this_x - cannon_extra))
