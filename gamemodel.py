@@ -10,12 +10,12 @@ class Game:
         self.ballSize = ballSize
         self._counter = 0
         self._wind = 0
-
-    """ A list containing both players """
-    def getPlayers(self):
         self._players = [
             Player(self, False, -90, "blue"),
             Player(self, True, 90, "red")]
+
+    """ A list containing both players """
+    def getPlayers(self):
         return self._players
 
     """ The height/width of the cannon """
@@ -69,6 +69,8 @@ class Player:
         self.xPos = xPos
         self.col = col
         self.score = 0
+        self.angle = 0
+        self.velocity = 0
 
     """ Create and return a projectile starting at the centre of this players cannon. Replaces any previous projectile for this player. """
     def fire(self, angle, velocity):
