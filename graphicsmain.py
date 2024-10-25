@@ -129,6 +129,7 @@ class GameGraphics:
             
             _text = "New Round! New wind is " + str(round(self.game.getCurrentWind(), 2))
             _textbox = Text(Point(0, 100), (_text))
+            _textbox.setSize(25)
             _textbox.draw(self.win)
             self._new_round = _textbox
 
