@@ -14,6 +14,7 @@ class GameGraphics:
         aLine = Line(Point(-110,0), Point(110,0))
         aLine.draw(self.win)
 
+        self._explotion_list = [None, None]
         self._new_round = None
         self.draw_text = [None, None]
         self.draw_cannons = [self.drawCanon(0), self.drawCanon(1)]
