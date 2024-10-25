@@ -14,6 +14,7 @@ class GameGraphics:
         aLine = Line(Point(-110,0), Point(110,0))
         aLine.draw(self.win)
 
+        self._new_round = None
         self.draw_text = [None, None]
         self.draw_cannons = [self.drawCanon(0), self.drawCanon(1)]
         self.draw_scores  = [self.drawScore(0), self.drawScore(1)]
@@ -43,6 +44,10 @@ class GameGraphics:
         circle_X = proj.getX()
         circle_Y = proj.getY()
         
+        if self._new_round != None:
+            self._new_round.undraw()
+            self._new_round = None
+
         if self.draw_projs[self.game.getCurrentPlayerNumber()] != None:
             self.draw_projs[self.game.getCurrentPlayerNumber()].undraw()
 
@@ -65,6 +70,10 @@ class GameGraphics:
         return proj
 
     def updateScore(self,playerNr):
+        for n in range(len(self.draw_projs)):
+            if self.draw_projs[n] != None:
+                self.draw_projs[n].undraw()
+                self.draw_projs[n] = None
         self.draw_text[playerNr].undraw()
         self.drawScore(playerNr)
 
@@ -92,6 +101,11 @@ class GameGraphics:
                 player.increaseScore()
                 self.updateScore(self.game.getCurrentPlayerNumber())
                 self.game.newRound()
+            
+            _text = "New Round! New wind is " + str(round(self.game.getCurrentWind(), 2))
+            _textbox = Text(Point(0, 100), (_text))
+            _textbox.draw(self.win)
+            self._new_round = _textbox
 
             self.game.nextPlayer()
 
